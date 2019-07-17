@@ -22,6 +22,8 @@ service: hello-world-python # NOTE: update this with your service name
 provider:
   name: aws
   runtime: python2.7
+  profile: serverless-admin
+  region: us-east-1
 
 # you can overwrite defaults here
 #  stage: dev
