@@ -1,6 +1,6 @@
 
 def hello(event, context):
-    print("hi!")
+    print("first update!")
     return "hello-world"
 
     # Use this code if you don't use the http event with the LAMBDA-PROXY
