@@ -24,6 +24,8 @@ provider:
   runtime: python2.7
   profile: serverless-admin
   region: us-east-1
+  memorySize: 128
+  timout: 3
 
 # you can overwrite defaults here
 #  stage: dev
@@ -61,8 +63,6 @@ provider:
 functions:
   hello-short-timeout:
     handler: handler.hello
-    timeout: 3
-    memorySize: 128
   hello-long-timeout:
     handler: handler.hello
     timeout: 6
