@@ -1,0 +1,18 @@
+service: python-example-environment-var
+
+provider:
+  name: aws
+  runtime: python2.7
+  region: us-east-1
+  profile: serverless-admin
+
+  environment:
+    FIRST_NAME: "John"
+
+functions:
+  hello-env-john:
+    handler: handler.hello
+  hello-env-marc:
+    handler: handler.hello
+    environment:
+      FIRST_NAME: "Marc"
