@@ -1,0 +1,20 @@
+service: python-example-vpc
+
+provider:
+  name: aws
+  runtime: python2.7
+  region: us-east-1
+  vpc:
+    securityGroupIds:
+      - sg-04842b3a00960d6ff
+    subnetIds:
+      - subnet-46302349
+      - subnet-6ee80123
+      - subnet-792e0a57
+      - subnet-81e4bae6
+      - subnet-c7b7daf9
+  profile: serverless-admin
+
+functions:
+  hello-vpc:
+    handler: handler.hello
