@@ -1,0 +1,40 @@
+service: phyton-s3-thumbnail-generator
+#app: your-app-name
+#tenant: your-tenant-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: python2.7
+  region: us-east-1
+  profile: serverless-admin
+  timeout: 10
+  memory: 128
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:*"
+      Resource: "*"
+  environment:
+    THUMBNAIL_SIZE: "128"
+
+custom:
+  bucket: static-thumbnails
+  pythonRequirements:
+    dockerizePip: true
+
+functions:
+  s3-thumbnail-generator:
+    handler: handler.s3_thumbnail_generator
+    events:
+      - s3:
+          bucket: ${self:custom.bucket}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .png
+
+plugins:
+  - serverless-python-requirements
